@@ -7,9 +7,9 @@ import './interface/IERC20.sol';
 contract MarketMaker {
     // Real USDT Token Contract Address : 0xdAC17F958D2ee523a2206206994597C13D831ec7
     // This Address is our MockUSDT Token
-    address public usdtAddress = 0x9D7f74d0C41E726EC95884E0e97Fa6129e3b5E99;
     // Because of cyclic dependencies of MarketMaker & ScatterGather, please deploy MM firstly, and add SG Addr with func setSGAddr manually
-    // address public ScatterGatherAddress;
+    address public usdtAddress = 0x9D7f74d0C41E726EC95884E0e97Fa6129e3b5E99;
+    
     mapping(address => uint256) public usdtBalances;
     mapping(address => bool) public lockAddr;
     mapping(address => address) public allowSettlement;
@@ -17,11 +17,6 @@ contract MarketMaker {
     event LockAddr(address indexed owner);
     event SetAllowSettlement(address indexed owner, address contractAddress);
     event SettlementToken(address indexed owner, address _publisher, address[] workers, uint256[] weights, uint256 totalAlloction);
-
-    // function setSGAddr(address _sgaddr) external {
-    //     require(ScatterGatherAddress == address(0), "SG Addr Only need set Once");
-    //     ScatterGatherAddress = _sgaddr;
-    // }
 
     function depositUSDT(uint256 _amount) external {
         IERC20 usdt = IERC20(usdtAddress);
