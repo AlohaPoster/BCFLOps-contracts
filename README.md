@@ -1,2 +1,2 @@
 # BCFLOps-contracts
-solidity smart contracts of BCFLOp(Blockchain based FL lifecycle model)
+Solidity smart contracts of BCFLOp(Blockchain based FL lifecycle model)
